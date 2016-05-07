@@ -6,10 +6,10 @@
       "isActive": true,
       "balance": "$3,585.69",
       "picture": "http://placehold.it/32x32",
-      "age": 30,
+      "age": "41",
       "eyeColor": "blue",
       "name": {
-        "first": "Bob",
+        "first": "Bobby",
         "last": "Smith"
       },
       "company": "GEEKNET",

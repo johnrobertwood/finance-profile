@@ -27,12 +27,10 @@ app.get('/', function(req, res) {
 	res.render("index")
 })
 
-
-
 //When the user submits the form, POST a query to database and validate the response username and pw
 app.post('/profile', function(req, res) {
-	var email = req.body.email
-	var password = req.body.password
+	var email = req.body.email || req.email
+	var password = req.body.password || req.password
 	
 	var user = db('users').find({ email: email })
 
@@ -49,22 +47,26 @@ app.post('/profile', function(req, res) {
 	}
 })
 
-app.put('/profile/update', function(req, res) {
-	var email = req.body.email
-	var newPicture = req.body.newPicture
-	var firstName = req.body.firstName
-	var lastName = req.body.lastName
-	var newPassword = req.body.newPassword
-	var newPhone = req.body.newPhone
-	var newAddress = req.body.newAddress
-	db('users')
-	  .chain()
-	  .find({ email: email })
-	  .assign({ password: newPassword, phone: newPhone, 
-	  	address: newAddress, name: { first: firstName, last: lastName }})
-	  .value()
+app.post('/profile/edit', function(req, res) {
+	var id = req.body.id
+	var user = db('users').find({ _id: id })
+	res.render('edit', user)
+})
 
-	res.json('Put request')
+app.post('/profile/update', function(req, res) {
+
+	db('users')
+  .chain()
+  .find({ _id: req.body.id })
+  .assign({ picture: req.body.picture, age: req.body.age, eyeColor: req.body.eyeColor, 
+  	name: { first: req.body.first, last: req.body.last }, company: req.body.company, 
+  	email: req.body.email, password: req.body.password, phone: req.body.phone, 
+  	address: req.body.address })
+  .value()
+
+  var user = db('users').find({ _id: req.body.id })
+
+	res.render('profile', user)
 })
 
 app.listen(port)

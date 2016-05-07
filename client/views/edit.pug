@@ -1,0 +1,36 @@
+html
+  body
+    .container
+      form(action='update' method='post')
+        input(type='hidden', name='id', value= _id)
+        label(for='picture') Picture:
+        input(type='text', name='picture', value= picture)
+        br
+        label(for='age') Age:
+        input(type='text', name='age', value= age)
+        br
+        label(for='eyeColor') Eye Color:
+        input(type='text', name='eyeColor', value= eyeColor)
+        br
+        label(for='first') First Name:
+        input(type='text', name='first', value= name.first)
+        br
+        label(for='last') Last Name:
+        input(type='text', name='last', value= name.last)
+        br
+        label(for='company') Company:
+        input(type='text', name='company', value= company)
+        br
+        label(for='email') Email:
+        input(type='text', name='email', value= email)
+        br
+        label(for='password') Password:
+        input(type='text', name='password', value= password)
+        br
+        label(for='phone') Phone:
+        input(type='text', name='phone', value= phone)
+        br
+        label(for='address') Address:
+        input(type='text', name='address', value= address)
+        br
+        input(type='submit' value='submit')
