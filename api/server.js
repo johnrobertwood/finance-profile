@@ -4,15 +4,13 @@ var low = require('lowdb')
 var storage = require('lowdb/file-async')
 var bodyParser = require('body-parser')
 var db = low('db.json', { storage: storage })
-var data = require('../data/users.json')
+var data = require('./users.json')
 var port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.set('view engine', 'pug')
-app.set('views', '../client/views')
-
+app.use(express.static(__dirname))
 
 //Check if the db exists and if it doesn't then add the data from /data/users.json
 if (!db.object.users) {
@@ -22,9 +20,9 @@ if (!db.object.users) {
 	})
 }
 
-//Display a login screen with username and password fields
+// Display a login screen with username and password fields
 app.get('/', function(req, res) {
-	res.render("index")
+	res.json(data)
 })
 
 //When the user submits the form, POST a query to database and validate the response username and pw
@@ -33,17 +31,16 @@ app.post('/profile', function(req, res) {
 	var password = req.body.password || req.password
 	
 	var user = db('users').find({ email: email })
+	console.log(user)
 
-//If username and password are correct display a profile page
-//Else redirect to login and display an error message
-	if (user !== undefined && password === user.password) {
-		res.render('profile', user)
+// If username and password are correct display a profile page
+// Else redirect to login and display an error message
+	if (!user) {
+		res.json({ success: false, message: 'Email not found'})
 	} else if (user !== undefined && password !== user.password) {
-		res.redirect('/')
-	} else if (!user) {
-		res.redirect('/')
+		res.json({ success: false, message: 'Password Incorrect'})
 	} else {
-		res.redirect('/')
+		res.json(user)
 	}
 })
 
