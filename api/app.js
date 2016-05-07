@@ -27,10 +27,7 @@ app.get('/', function(req, res) {
 	res.render("index")
 })
 
-app.get('/profile', function(req, res) {
 
-	res.send(req.body)
-})
 
 //When the user submits the form, POST a query to database and validate the response username and pw
 app.post('/profile', function(req, res) {
