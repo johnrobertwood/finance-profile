@@ -10,6 +10,10 @@ var port = process.env.PORT || 3000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+app.set('view engine', 'pug')
+app.set('views', '../client/views')
+
+
 //Check if the db exists and if it doesn't then add the data from /data/users.json
 if (!db.object.users) {
 	db.object.users
@@ -20,29 +24,51 @@ if (!db.object.users) {
 
 //Display a login screen with username and password fields
 app.get('/', function(req, res) {
-	res.send("Login Screen")
+	res.render("index")
+})
+
+app.get('/profile', function(req, res) {
+
+	res.send(req.body)
 })
 
 //When the user submits the form, POST a query to database and validate the response username and pw
-app.post('/login', function(req, res) {
+app.post('/profile', function(req, res) {
 	var email = req.body.email
 	var password = req.body.password
 	
-	var user = db('users').find({ email: email });
+	var user = db('users').find({ email: email })
 
-//If the username or password is incorrect, redirect to login and display an error message
+//If username and password are correct display a profile page
+//Else redirect to login and display an error message
 	if (user !== undefined && password === user.password) {
-		res.send("Login Success!")
+		res.render('profile', user)
 	} else if (user !== undefined && password !== user.password) {
-		res.send("Password incorrect")
+		res.redirect('/')
 	} else if (!user) {
-		res.send("Email was not found")
+		res.redirect('/')
 	} else {
-		res.send("Something went wrong")
+		res.redirect('/')
 	}
 })
 
-//Else display a profile page that shows the user profile details and account balance
+app.put('/profile/update', function(req, res) {
+	var email = req.body.email
+	var newPicture = req.body.newPicture
+	var firstName = req.body.firstName
+	var lastName = req.body.lastName
+	var newPassword = req.body.newPassword
+	var newPhone = req.body.newPhone
+	var newAddress = req.body.newAddress
+	db('users')
+	  .chain()
+	  .find({ email: email })
+	  .assign({ password: newPassword, phone: newPhone, 
+	  	address: newAddress, name: { first: firstName, last: lastName }})
+	  .value()
+
+	res.json('Put request')
+})
 
 app.listen(port)
 
