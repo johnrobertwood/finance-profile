@@ -1,16 +1,39 @@
-var financeController = angular.module('financeController', []);
+angular.module('financeController', ['ngRoute']).
 
-financeController.controller('FinanceCtrl', ['$scope', '$http', function($scope, $http) {
-	// $http.get('/').success(function(res) {
-	// 	// $scope.users = res;
-	// 	console.log(res)
-	// })
+controller('ProfileCtrl', ['$rootScope', '$scope', '$http', '$location', function($rootScope, $scope, $http, $location) {
 
 	$scope.userLogin = function() {	
-		$http.post('/profile', $scope.loginData).success(function(res) {
-			$scope.user = res;
+		$http.post('/login', $scope.loginData).success(function(res) {
 			console.log(res)
+			$rootScope.user = res;
+			if(res.success !== false) {
+				$location.path('/profile')
+			}
 		});
 	};
 
-}])
+	$scope.editDetails = function() {
+		$location.path('/profile/edit')
+	}	
+
+	$scope.userLogout = function() {
+		$rootScope.user = {}
+		$location.path('/login')
+	}
+
+	$scope.cancelEdit = function() {
+		$location.path('/profile')
+	}
+
+	$scope.updateProfile = function() {
+		$http.post('/profile/update', $scope.user).success(function(res) {
+
+			$rootScope.user = res;
+
+			if(res.success !== false) {
+				$location.path('/profile')
+			}
+		})
+	}
+}]);
+

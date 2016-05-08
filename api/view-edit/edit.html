@@ -1,0 +1,18 @@
+<div class="container" ng-controller="ProfileCtrl">
+	<table>
+		<tr><td><input class="form-control" ng-model="user.picture"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.age"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.eyeColor"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.name.first"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.name.last"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.company"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.email"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.password"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.phone"></td></tr>
+		<tr><td><input class="form-control" ng-model="user.address"></td></tr>
+		<tr>
+			<td><button id="update" class="btn btn-info" ng-click="updateProfile()">Update</button></td>
+			<td><button id="add" class="btn btn-primary add" ng-click="cancelEdit()">Cancel</button></td>
+		</tr>
+	</table>
+</div>

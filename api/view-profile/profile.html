@@ -1,0 +1,18 @@
+<div class="container" ng-controller="ProfileCtrl">
+	<table>
+		<tr><td>{{user.picture}}</td></tr>
+		<tr><td>{{user.age}}</td></tr>
+		<tr><td>{{user.eyeColor}}</td></tr>
+		<tr><td>{{user.name.first}}</td></tr>
+		<tr><td>{{user.name.last}}</td></tr>
+		<tr><td>{{user.company}}</td></tr>
+		<tr><td>{{user.email}}</td></tr>
+		<tr><td>{{user.password}}</td></tr>
+		<tr><td>{{user.phone}}</td></tr>
+		<tr><td>{{user.address}}</td></tr>
+		<tr>
+			<td><button id="add" class="btn btn-primary add" ng-click="userLogout()">Logout</button></td>
+			<td><button id="edit" class="btn btn-info" ng-click="editDetails()">Edit</button></td>
+		</tr>
+	</table>
+</div>

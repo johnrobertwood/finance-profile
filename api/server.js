@@ -26,15 +26,17 @@ app.get('/', function(req, res) {
 })
 
 //When the user submits the form, POST a query to database and validate the response username and pw
-app.post('/profile', function(req, res) {
+app.post('/login', function(req, res) {
 	var email = req.body.email || req.email
 	var password = req.body.password || req.password
 	
 	var user = db('users').find({ email: email })
-	console.log(user)
-
+	// console.log(user);
 // If username and password are correct display a profile page
 // Else redirect to login and display an error message
+
+// res.json({ success: false, message: 'Email not found'})
+	
 	if (!user) {
 		res.json({ success: false, message: 'Email not found'})
 	} else if (user !== undefined && password !== user.password) {
@@ -47,23 +49,30 @@ app.post('/profile', function(req, res) {
 app.post('/profile/edit', function(req, res) {
 	var id = req.body.id
 	var user = db('users').find({ _id: id })
-	res.render('edit', user)
+	res.json(user)
 })
 
 app.post('/profile/update', function(req, res) {
 
 	db('users')
   .chain()
-  .find({ _id: req.body.id })
+  .find({ email: req.body.email })
   .assign({ picture: req.body.picture, age: req.body.age, eyeColor: req.body.eyeColor, 
-  	name: { first: req.body.first, last: req.body.last }, company: req.body.company, 
+  	name: { first: req.body.name.first, last: req.body.name.last}, company: req.body.company, 
   	email: req.body.email, password: req.body.password, phone: req.body.phone, 
   	address: req.body.address })
   .value()
+  var user = db('users').find({ email: req.body.email })
 
-  var user = db('users').find({ _id: req.body.id })
+  // console.log(user)
 
-	res.render('profile', user)
+  // .chain()
+  // .find({ email: req.body.email })
+  // .assign({email: req.body.email, password: req.body.password}) 
+  // .value()
+  // var user = db('users').find({ email: req.body.email })
+
+	res.json(user)
 })
 
 app.listen(port)

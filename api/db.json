@@ -6,11 +6,11 @@
       "isActive": true,
       "balance": "$3,585.69",
       "picture": "http://placehold.it/32x32",
-      "age": "41",
+      "age": "42",
       "eyeColor": "blue",
       "name": {
-        "first": "Bobby",
-        "last": "Smith"
+        "first": "Henderson",
+        "last": "Briggs"
       },
       "company": "GEEKNET",
       "email": "henderson.briggs@geeknet.net",
