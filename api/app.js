@@ -6,12 +6,13 @@ var bodyParser = require('body-parser')
 var db = low('db.json', { storage: storage })
 var data = require('../data/users.json')
 var port = process.env.PORT || 3000
+var exports = module.exports = {}
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.set('view engine', 'pug')
-app.set('views', '../client/views')
+app.set('views', './views')
 
 
 //Check if the db exists and if it doesn't then add the data from /data/users.json
@@ -69,7 +70,11 @@ app.post('/profile/update', function(req, res) {
 	res.render('profile', user)
 })
 
-app.listen(port)
+var server = app.listen(port)
 
 console.log("Server is up on port " + port)
+
+exports.closeServer = function() {
+	server.close()
+}
 

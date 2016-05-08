@@ -29,3 +29,4 @@ node_modules
 
 # Database changes
 api/db.json
+db.json
