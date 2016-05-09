@@ -4,7 +4,6 @@ controller('ProfileCtrl', ['$rootScope', '$scope', '$http', '$location', functio
 
 	$scope.userLogin = function() {	
 		$http.post('/login', $scope.loginData).success(function(res) {
-			console.log(res)
 			$rootScope.user = res;
 			if(res.success !== false) {
 				$location.path('/profile')
@@ -21,15 +20,9 @@ controller('ProfileCtrl', ['$rootScope', '$scope', '$http', '$location', functio
 		$location.path('/login')
 	}
 
-	$scope.cancelEdit = function() {
-		$location.path('/profile')
-	}
-
 	$scope.updateProfile = function() {
 		$http.post('/profile/update', $scope.user).success(function(res) {
-
 			$rootScope.user = res;
-
 			if(res.success !== false) {
 				$location.path('/profile')
 			}

@@ -1,24 +1,24 @@
 {
   "name": "ijoin-finace",
   "version": "1.0.0",
-  "description": "An app to login, check balance and update profile ",
+  "description": "An app to login, check balance and update profile",
   "main": "app.js",
   "dependencies": {
     "angular": "^1.5.5",
     "angular-route": "^1.5.5",
     "body-parser": "^1.15.1",
-    "bower": "^1.7.9",
+    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "lowdb": "^0.12.5",
-    "pug": "^2.0.0-alpha6"
+    "request": "^2.72.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "protractor api/spec/conf.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/johnrobertwood/finance-profile.git"
+    "url": "https://github.com/johnrobertwood/finance-profile.git"
   },
   "keywords": [
     "node",

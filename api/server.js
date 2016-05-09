@@ -4,7 +4,7 @@ var low = require('lowdb')
 var storage = require('lowdb/file-async')
 var bodyParser = require('body-parser')
 var db = low('db.json', { storage: storage })
-var data = require('./users.json')
+var data = require('../data/users.json')
 var port = process.env.PORT || 3000
 
 app.use(bodyParser.json())
@@ -31,7 +31,6 @@ app.post('/login', function(req, res) {
 	var password = req.body.password || req.password
 	
 	var user = db('users').find({ email: email })
-	// console.log(user);
 // If username and password are correct display a profile page
 // Else redirect to login and display an error message
 
@@ -63,14 +62,6 @@ app.post('/profile/update', function(req, res) {
   	address: req.body.address })
   .value()
   var user = db('users').find({ email: req.body.email })
-
-  // console.log(user)
-
-  // .chain()
-  // .find({ email: req.body.email })
-  // .assign({email: req.body.email, password: req.body.password}) 
-  // .value()
-  // var user = db('users').find({ email: req.body.email })
 
 	res.json(user)
 })
