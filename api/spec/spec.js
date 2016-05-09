@@ -43,24 +43,24 @@ describe('Profile rest app', function() {
 	})
 
 	it('should login the user henderson', function() {
-		// userLogin('henderson.briggs@geeknet.net', '23derd*334')
-		userLogin('henderson.briggs@geeknet.net', 'p')
+		userLogin('henderson.briggs@geeknet.net', '23derd*334')
+		// userLogin('henderson.briggs@geeknet.net', 'password')
 		expect(userEmail.getAttribute('value')).toEqual('henderson.briggs@geeknet.net')
-		// expect(userPassword.getText()).toEqual('23derd*334')
-		expect(userPassword.getAttribute('value')).toEqual('p')
+		expect(userPassword.getAttribute('value')).toEqual('23derd*334')
+		// expect(userPassword.getAttribute('value')).toEqual('password')
 	})
 
 	it('should enter edit mode when the edit button is clicked', function() {
 		var emailField = element(by.model('user.email'))
-		// userLogin('henderson.briggs@geeknet.net', '23derd*334')
-		userLogin('henderson.briggs@geeknet.net', 'p')
+		userLogin('henderson.briggs@geeknet.net', '23derd*334')
+		// userLogin('henderson.briggs@geeknet.net', 'password')
 		editMode();
 		expect(emailField.getAttribute('value')).toEqual('henderson.briggs@geeknet.net')
 	})
 
 	it('should change the user henderson age to 99', function() {
-		// userLogin('henderson.briggs@geeknet.net', '23derd*334')
-		userLogin('henderson.briggs@geeknet.net', 'p')
+		userLogin('henderson.briggs@geeknet.net', '23derd*334')
+		// userLogin('henderson.briggs@geeknet.net', 'password')
 		editMode()
 		editAge(99)
 		var userAge = element(by.id('profileAge'))
@@ -68,8 +68,8 @@ describe('Profile rest app', function() {
 	})
 
 	it('should reset henderson back to original age of 30', function() {
-		// userLogin('henderson.briggs@geeknet.net', '23derd*334')
-		userLogin('henderson.briggs@geeknet.net', 'p')
+		userLogin('henderson.briggs@geeknet.net', '23derd*334')
+		// userLogin('henderson.briggs@geeknet.net', 'password')
 		editMode()
 		editAge(30)
 		var userAge = element(by.id('profileAge'))
@@ -77,8 +77,8 @@ describe('Profile rest app', function() {
 	})
 
 	it('should log the henderson user out and return to the login page', function() {
-		// userLogin('henderson.briggs@geeknet.net', '23derd*334')
-		userLogin('henderson.briggs@geeknet.net', 'p')
+		userLogin('henderson.briggs@geeknet.net', '23derd*334')
+		// userLogin('henderson.briggs@geeknet.net', 'password')
 		logout()
 		expect(emailLogin.getText()).toEqual('')
 	})

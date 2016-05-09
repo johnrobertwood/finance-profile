@@ -28,13 +28,12 @@ app.get('/', function(req, res) {
 
 //When the user submits the form, POST a query to database and validate the response username and pw
 app.post('/login', function(req, res) {
-	var email = req.body.email || req.email
-	var password = req.body.password || req.password
-	
+	var email = req.body.email
+	var password = req.body.password
 	var user = db('users').find({ email: email })
+
 // If username and password are correct display a profile page
-// Else redirect to login and display an error message
-	
+// Else redirect to login and display an error message	
 	if (!user) {
 		res.json({ success: false, message: 'Email not found'})
 	} else if (user !== undefined && password !== user.password) {
@@ -44,14 +43,15 @@ app.post('/login', function(req, res) {
 	}
 })
 
+//Edit route takes id param to query db and return profile data
 app.post('/profile/edit', function(req, res) {
 	var id = req.body.id
 	var user = db('users').find({ _id: id })
 	res.json(user)
 })
 
+//Update route writes the changed data back to the db
 app.post('/profile/update', function(req, res) {
-
 	db('users')
   .chain()
   .find({ email: req.body.email })

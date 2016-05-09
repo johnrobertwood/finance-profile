@@ -15,6 +15,12 @@
     "request": "^2.72.0"
   },
   "scripts": {
+    "prestart": "npm install",
+    "start": "node api/server.js",
+
+    "prewebdriver": "webdriver-manager update",
+    "webdriver": "webdriver-manager start",
+
     "test": "protractor api/spec/conf.js"
   },
   "repository": {
