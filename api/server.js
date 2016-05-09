@@ -11,7 +11,7 @@ var exports = module.exports = {}
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use(express.static(__dirname))
+app.use(express.static(__dirname + '/../client'))
 
 //Check if the db exists and if it doesn't then add the data from /data/users.json
 if (!db.object.users) {
@@ -20,11 +20,6 @@ if (!db.object.users) {
 		db('users').push(user)
 	})
 }
-
-// Display a login screen with username and password fields
-app.get('/', function(req, res) {
-	res.json(data)
-})
 
 //When the user submits the form, POST a query to database and validate the response username and pw
 app.post('/login', function(req, res) {

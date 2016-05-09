@@ -21,7 +21,7 @@
     "prewebdriver": "webdriver-manager update",
     "webdriver": "webdriver-manager start",
 
-    "test": "protractor api/spec/conf.js"
+    "test": "protractor client/spec/conf.js"
   },
   "repository": {
     "type": "git",
