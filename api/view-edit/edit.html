@@ -1,0 +1,28 @@
+<div class="container" ng-controller="ProfileCtrl">
+
+	<h2>Account Balance</h2>
+	<p id="balance">{{user.balance}}</p>
+	<img id="photo" ng-src="{{user.picture}}" alt="Profile Photo"></img>
+	<label for="profileAge">Age</label>
+	<input type="text" id="profileAge" class="form-control" ng-model="user.age">
+	<label for="profileEyeColor">Eye Color</label>
+	<input type="text" id="profileEyeColor" class="form-control" ng-model="user.eyeColor">
+	<label for="profileFirstName">First Name</label>
+	<input type="text" id="profileFirstName" class="form-control" ng-model="user.name.first">
+	<label for="profileLastName">Last Name</label>
+	<input type="text" id="profileLastName" class="form-control" ng-model="user.name.last">
+	<label for="profileCompany">Company</label>
+	<input type="text" id="profileCompany" class="form-control" ng-model="user.company">
+	<label for="profileEmail">Email</label>
+	<input type="text" id="profileEmail" class="form-control" ng-model="user.email">
+	<label for="profilePassword">Password</label>
+	<input type="text" id="profilePassword" class="form-control" ng-model="user.password">
+	<label for="profilePhone">Phone</label>
+	<input type="text" id="profilePhone" class="form-control" ng-model="user.phone">
+	<label for="profileAddress">Address</label>
+	<input type="text" id="profileAddress" class="form-control" ng-model="user.address">
+	<div class="buttons">
+		<button id="update" class="btn btn-info" ng-click="updateProfile()">Save</button>
+		<button id="logout" class="btn btn-primary logout" ng-click="userLogout()">Logout</button>
+	</div>
+</div>

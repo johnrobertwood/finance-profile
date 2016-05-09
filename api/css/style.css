@@ -1,0 +1,50 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #f2f2f2;
+	max-width: 30%;
+	padding-bottom: 100px;
+}
+
+.row img {
+	display: flex;
+	justify-content: center;
+	border: 1px solid #000;
+	border-radius: 25px;
+	margin: 20px 0;
+}
+
+#email,
+#password {
+	margin-bottom: 20px;
+}
+
+#balance {
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+li {
+	list-style: none;
+	margin: 10px auto;
+}
+
+#edit,
+#logout {
+	margin: 10px auto;
+}
+
+#photo {
+	height: 60px;
+	width: 60px;
+}
+
+label {
+	text-align: left;
+}
