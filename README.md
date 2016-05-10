@@ -1,4 +1,6 @@
-#Run and test in local environment 
+#Finance Profile Client and API with Node, Express and Angular
+
+##Instructions to run and test in local environment 
 
 npm start
 
@@ -6,22 +8,20 @@ npm run webdriver
 
 npm test
 
-## Simple Developer Exercise 
+### A Simple Profile App 
 
-The savvy cats over at ACME Financial would like to be able to allow users to login to their account, check their balance and update their personal details. Write a simple web application (API and UI) using node.js and lowdb that lets users accomplish those tasks. 
+This web application (API and UI) uses node.js and lowdb that lets users login to their account, check their balance and update their personal details.
 
-### Requirements
+### Features
 
 * Login to the app via email and password
-* Restrict access to valid a User
-* Once logged in show the details of the user on the page
-* Authorized users can check their account balance
-* Allow the user to change their details
+* Access restricted to valid Users
+* Check the user details and account balance
+* Change the details
 * lowdb (DB) -> https://github.com/typicode/lowdb
-* node.js (v0.10.x) -> http://nodejs.org/ 
+* node.js (v4.4.x) -> http://nodejs.org/ 
 
-### Bonus Points
+### Bonus Features
 
 * Fully responsive UI
-* Unit Tests of the API
 * Functional Tests of the UI
