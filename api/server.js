@@ -37,13 +37,6 @@ app.post('/login', function(req, res) {
 	}
 })
 
-app.get('/profile', function(req, res) {
-  if (req.session.email) {
-    var user = db('users').find({email: req.session.email})
-    res.json(user)
-  }
-})
-
 //Edit route takes id param to query db and return profile data
 app.post('/profile/edit', function(req, res) {
 	var user = db('users').find({ email: req.body.email })
