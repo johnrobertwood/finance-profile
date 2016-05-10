@@ -2,16 +2,11 @@
   "name": "ijoin-finace",
   "version": "1.0.0",
   "description": "An app to login, check balance and update profile",
-  "main": "app.js",
+  "main": "api/server.js",
   "dependencies": {
     "angular": "^1.5.5",
-    "angular-route": "^1.5.5",
     "body-parser": "^1.15.1",
-    "bootstrap": "^3.3.6",
     "express": "^4.13.4",
-    "express-session": "^1.13.0",
-    "jasmine": "^2.4.1",
-    "jasmine-node": "^1.14.5",
     "lowdb": "^0.12.5",
     "request": "^2.72.0"
   },
