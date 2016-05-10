@@ -24,4 +24,5 @@ This web application (API and UI) uses node.js and lowdb that lets users login t
 ### Bonus Features
 
 * Fully responsive UI
+* Unit Tests of the api
 * Functional Tests of the UI

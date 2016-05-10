@@ -20,7 +20,7 @@
     "start": "node api/server.js",
     "prewebdriver": "webdriver-manager update",
     "webdriver": "webdriver-manager start",
-    "test": "protractor client/spec/conf.js"
+    "test": "protractor test/e2e/conf.js"
   },
   "repository": {
     "type": "git",
