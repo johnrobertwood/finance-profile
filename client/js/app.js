@@ -1,3 +1,6 @@
 var financeApp = angular.module('financeApp', [
-	'financeController'
+	'financeController',
+  'financeApp.edit',
+  'financeApp.profile',
+  'financeApp.login'
 ]);

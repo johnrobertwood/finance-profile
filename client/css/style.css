@@ -7,6 +7,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
 	background-color: #f2f2f2;
 	max-width: 30%;
 	padding-bottom: 100px;
@@ -25,9 +26,14 @@ body {
 	margin-bottom: 20px;
 }
 
+#signin {
+	height: 400px;
+}
+
 #balance {
 	font-size: 1.2em;
 	font-weight: bold;
+	text-align: center;
 }
 
 li {
@@ -41,14 +47,14 @@ li {
 }
 
 #photo {
-	height: 60px;
-	width: 60px;
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+	height: 120px;
+	width: 120px;
+	margin-bottom: 20px;
 }
 
 label {
 	text-align: left;
-}
-
-form {
-	width: 80%;
 }

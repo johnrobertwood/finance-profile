@@ -3,21 +3,12 @@ var app = express()
 var low = require('lowdb')
 var storage = require('lowdb/file-async')
 var bodyParser = require('body-parser')
-var session = require('express-session')
 var db = low('db.json', { storage: storage })
 var data = require('../data/users.json')
-var port = process.env.PORT || 3000
-var exports = module.exports = {}
+var port = 3000
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-
-app.set('trust proxy', 1) // trust first proxy
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: true
-}))
 
 app.use(express.static(__dirname + '/../client'))
 
@@ -29,22 +20,11 @@ if (!db.object.users) {
 	})
 }
 
-// app.get('/', function(req, res) {
-//   console.log("GET /profile")
-//   if (req.session.email) {
-//     var user = db('users').find({email: req.session.email})
-//     res.json(user)
-//   }
-// })
-
 //When the user submits the form, POST a query to database and validate the response username and pw
 app.post('/login', function(req, res) {
-  console.log("POST /login")
   var email = req.body.email
   var password = req.body.password
   var user = db('users').find({ email: email })
-
-  req.session.email = req.body.email
 
 // If username and password are correct display a profile page
 // Else redirect to login and display an error message	
@@ -58,25 +38,20 @@ app.post('/login', function(req, res) {
 })
 
 app.get('/profile', function(req, res) {
-  console.log("GET /profile")
   if (req.session.email) {
     var user = db('users').find({email: req.session.email})
     res.json(user)
   }
 })
 
-
 //Edit route takes id param to query db and return profile data
 app.post('/profile/edit', function(req, res) {
-  console.log('POST /profile/edit')
 	var user = db('users').find({ email: req.body.email })
-  // console.log(req.session.email)
   res.json(user)
 })
 
 //Update route writes the changed data back to the db
 app.post('/profile/update', function(req, res) {
-  console.log("POST /profile/update")
 	db('users')
   .chain()
   .find({ email: req.body.email })
@@ -93,8 +68,3 @@ app.post('/profile/update', function(req, res) {
 var server = app.listen(port)
 
 console.log("Server is up on port " + port)
-
-exports.closeServer = function() {
-	server.close()
-}
-
