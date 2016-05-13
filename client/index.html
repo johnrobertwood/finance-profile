@@ -5,28 +5,15 @@
 	<title>Financial Login</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/controller.js"></script>
-  <script src="components/login/loginDirective.js"></script>
-  <script src="components/profile/profileDirective.js"></script>
-  <script src="components/edit/editDirective.js"></script>
 </head>
-<body ng-controller="ProfileCtrl">
+<body>
 
+  <div ng-view></div> 
 
-  <div ng-show="showLogin" class="container">
-    <login-directive></login-directive>
-  </div>
-
-  <div ng-show="showProfile" class="container">
-    <profile-directive></profile-directive>
-  </div>
-  
-  <div ng-show="showEdit" class="container">
-    <edit-directive></edit-directive>
-  </div>
-
-
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/angular-route/angular-route.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/services.js"></script>
 </body>
 </html>
