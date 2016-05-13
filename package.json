@@ -1,5 +1,5 @@
 {
-  "name": "ijoin-finace",
+  "name": "ijoin-finance",
   "version": "1.0.0",
   "description": "An app to login, check balance and update profile",
   "main": "api/server.js",
@@ -7,6 +7,7 @@
     "angular": "^1.5.5",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "jasmine": "^2.4.1",
     "lowdb": "^0.12.5",
     "request": "^2.72.0"
   },
@@ -15,7 +16,8 @@
     "start": "node api/server.js",
     "prewebdriver": "webdriver-manager update",
     "webdriver": "webdriver-manager start",
-    "test": "protractor test/e2e/conf.js"
+    "test": "jasmine JASMINE_CONFIG_PATH=test/unit/spec/support/jasmine.json",
+    "protractor": "protractor test/e2e/conf.js"
   },
   "repository": {
     "type": "git",

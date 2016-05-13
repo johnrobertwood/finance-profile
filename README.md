@@ -1,13 +1,15 @@
 #Finance Profile Client and API with Node, Express and Angular
 
 
-##Instructions to run and test in local environment 
+##Instructions 
 
-npm start
+To install dependencies and start the server: npm start
 
-npm run webdriver
+To run unit tests: npm test
 
-npm test
+To start the webdriver automation tool: npm run webdriver
+
+To run protractor e2e test with webdriver running: npm run protractor
 
 ### A Simple Profile App 
 

@@ -1,5 +1,5 @@
 var request = require('request')
-var expressApi = require('../../api/server')
+var expressApi = require('../../../api/server')
 var base_url = 'http://localhost:3000/'
 
 describe("Form submission test", function() {
@@ -22,10 +22,10 @@ describe("Form submission test", function() {
     }
 
     it('returns status code 200 and text/html content', function(done) {
-      request.post({url: 'http://localhost:3000/profile', form:formData}, function(err, httpResponse, body) {
+      request.post({url: 'http://localhost:3000/login', form:formData}, function(err, httpResponse, body) {
 
         expect(httpResponse.statusCode).toBe(200)
-        expect(httpResponse.headers['content-type']).toBe('text/html; charset=utf-8')
+        expect(httpResponse.headers['content-type']).toBe('application/json; charset=utf-8')
         done()
       })
     })
