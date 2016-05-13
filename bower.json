@@ -1,0 +1,22 @@
+{
+  "name": "ijoin-finance",
+  "description": "An app to login, check balance and update profile",
+  "version": "1.0.0",
+  "homepage": "https://github.com/johnrobertwood/finance-profile.git",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.5"
+  },
+  "authors": [
+    "John Wood <johnrobertwood@yahoo.com>"
+  ],
+  "main": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
